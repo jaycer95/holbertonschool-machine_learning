@@ -2,6 +2,7 @@
 
 
 def matrix_transpose(matrix):
+    """ transpose of a 2D matrix"""
     row = []
     m = []
     i = 0
