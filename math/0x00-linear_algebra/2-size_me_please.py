@@ -3,6 +3,7 @@
 
 
 def matrix_shape(matrix):
+    """ Shape of a matrix """
     shape = [len(matrix)]
     tmp = matrix
     while isinstance(tmp[0], list):
