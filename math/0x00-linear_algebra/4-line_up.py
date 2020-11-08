@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Sum arrays"""
 
 
 def add_arrays(arr1, arr2):
