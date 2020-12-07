@@ -13,7 +13,7 @@ _, _, Vh = np.linalg.svd(norm_data)
 pca_data = np.matmul(norm_data, Vh[:3].T)
 
 
-fig = plt.figure(figsize = (12, 8))
+fig = plt.figure(figsize = (7, 7))
 ax = plt.axes(projection ="3d")
 
 x = [i[0] for i in pca_data]
