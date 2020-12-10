@@ -4,9 +4,6 @@
 
 def summation_i_squared(n):
     """  calculate given sum  """
-    sum = 0
     if type(n) == int and n >= 1:
-        for i in range(1, n+1):
-            sum += i ** 2
-        return sum
+        return (n * (n + 1) * (n + 2) / 6)
     return None
