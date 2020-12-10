@@ -14,14 +14,9 @@ def poly_integral(poly, C=0):
         return None
     if not isinstance(poly, list) or poly == []:
         return None
-    for i in range(0, len(poly)):
-        if type(poly[i]) is not int and type(poly[i]) is not float:
-            return None
-        try:
-            if is_whole(poly[i] / (i + 1)):
-                lp.append(int(poly[i] / (i + 1)))
-            else:
-                lp.append(poly[i] / (i + 1))
-        except ZeroDivisionError:
-            lp.append(0)
+    for i in range(len(poly)):
+        if is_whole(poly[i] / (i + 1)):
+            lp.append(int(poly[i] / (i + 1)))
+        else:
+            lp.append(poly[i] / (i + 1))
     return lp
