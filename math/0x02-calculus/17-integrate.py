@@ -14,6 +14,8 @@ def poly_integral(poly, C=0):
         return None
     if not isinstance(poly, list) or poly == []:
         return None
+    if len(poly) == 1 and poly[0] == 0:
+        return lp
     for i in range(len(poly)):
         if not isinstance(poly[i], (int, float)):
             return None
