@@ -4,6 +4,6 @@
 
 def summation_i_squared(n):
     """  calculate given sum  """
-    if type(n) == int and n >= 1:
+    if (type(n) == int or type(n) == float) and n >= 1:
         return int(n * (n + 1) * (2 * n + 1) / 6)
     return None
