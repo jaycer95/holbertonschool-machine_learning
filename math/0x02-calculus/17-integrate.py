@@ -10,8 +10,9 @@ def is_whole(n):
 def poly_integral(poly, C=0):
     """ Calculate the integral of a polynomial """
     lp = [C]
-    if not isinstance(C, (int, float))
-    or not isinstance(poly, list) or poly == []:
+    if not isinstance(C, (int, float)):
+        return None
+    if not isinstance(poly, list) or poly == []:
         return None
     for i in range(0, len(poly)):
         if type(poly[i]) is not int and type(poly[i]) is not float:
