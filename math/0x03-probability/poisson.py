@@ -5,6 +5,8 @@
 class Poisson:
     """  represent a poisson distribution   """
 
+    e = 2.7182818285
+
     def __init__(self, data=None, lambtha=1.):
         """ Class contructor """
         self.data = data
@@ -18,3 +20,16 @@ class Poisson:
             if len(data) <= 2:
                 raise ValueError("data must contain multiple values")
             self.lambtha = float(sum(data) / len(data))
+
+    def pmf(self, k):
+        """ Calculate the value of the PMF for a given number of successes """
+
+        if not isinstance(k, int):
+            self.k = int(k)
+        if k < 0:
+            return 0
+        fact = 1
+        for i in range(2, k + 1):
+            fact = fact * i
+        pmf = (self.lambtha ** k) * (self.e ** (- self.lambtha)) / fact
+        return pmf
