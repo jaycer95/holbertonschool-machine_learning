@@ -3,7 +3,7 @@
 
 
 class Exponential:
-    """  represent a poisson distribution   """
+    """  represent an exponential distribution   """
 
     e = 2.7182818285
 
@@ -20,3 +20,11 @@ class Exponential:
             if len(data) <= 2:
                 raise ValueError("data must contain multiple values")
             self.lambtha = float(len(data) / sum(data))
+
+    def pdf(self, x):
+        """ Calculate the value of the PDF for a given period """
+
+        if x < 0:
+            return 0
+        pdf = self.lambtha * (self.e ** (- self.lambtha * x))
+        return pdf
