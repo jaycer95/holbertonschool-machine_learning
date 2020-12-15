@@ -26,3 +26,13 @@ class Normal:
             for i in data:
                 a += (i - self.mean) ** 2
             self.stddev = (a / len(data)) ** (1/2)
+
+    def z_score(self, x):
+        """ Calculate the z-score of a given x-value """
+
+        return (x - self.mean) / self.stddev
+
+    def x_value(self, z):
+        """ Calculate the x-value of a given z-score """
+
+        return z * self.stddev + self.mean
