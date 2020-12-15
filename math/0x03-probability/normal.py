@@ -6,6 +6,7 @@ class Normal:
     """  represent an Normal distribution   """
 
     e = 2.7182818285
+    pi = 3.1415926536
 
     def __init__(self, data=None, mean=0., stddev=1.):
         """ Class contructor """
@@ -36,3 +37,10 @@ class Normal:
         """ Calculate the x-value of a given z-score """
 
         return z * self.stddev + self.mean
+
+    def pdf(self, x):
+        """ Calculate the value of the PDF for a given x-value """
+
+        p1 = 1 / (self.stddev * (2 * self.pi) ** 1/2)
+        p2 = self.e ** (-(x - self.mean) ** 2 / (2 * self.stddev ** 2))
+        return p1 * p2
