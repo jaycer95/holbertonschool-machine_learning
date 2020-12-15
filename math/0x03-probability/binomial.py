@@ -41,7 +41,7 @@ class Binomial:
         for i in range(2, k + 1):
             fact = fact * i
         return fact
-    
+
     def pmf(self, k):
         """ Calculate the value of the PMF for a given number of successes """
 
@@ -49,7 +49,15 @@ class Binomial:
             k = int(k)
         if k < 0:
             return 0
-        
+
         factor = self.fact(self.n) / (self.fact(k) * self.fact(self.n - k))
         pmf = factor * (self.p ** k) * ((1 - self.p) ** (self.n - k))
         return pmf
+
+    def cdf(self, k):
+        """ Calculate the value of the CDF for a given number of successes """
+
+        a = 0
+        for i in range(k + 1):
+            a += self.pmf(i)
+        return a
