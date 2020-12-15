@@ -44,3 +44,15 @@ class Normal:
         p1 = self.stddev * ((2 * self.pi) ** 0.5)
         p2 = self.e ** (- 0.5 * (((x - self.mean) / self.stddev) ** 2))
         return p2 / p1
+
+    def erf(self, x):
+        """ Error function """
+
+        devl = (x - x ** 3 / 3 + x ** 5 / 10 - x ** 7 / 42 + x ** 9 / 216)
+        return (2 / self.pi ** 0.5) * devl
+
+    def cdf(self, x):
+        """ Calculate the value of the CDF for a given x-value """
+
+        a = 1 + self.erf((x - self.mean) / (self.stddev * (2 ** 0.5)))
+        return a / 2
