@@ -41,6 +41,6 @@ class Normal:
     def pdf(self, x):
         """ Calculate the value of the PDF for a given x-value """
 
-        p1 = 1 / (self.stddev * (2 * self.pi) ** 1/2)
-        p2 = self.e ** (-(x - self.mean) ** 2 / (2 * self.stddev ** 2))
-        return p1 * p2
+        p1 = self.stddev * ((2 * self.pi) ** 0.5)
+        p2 = self.e ** (- 0.5 * (((x - self.mean) / self.stddev) ** 2))
+        return p2 / p1
