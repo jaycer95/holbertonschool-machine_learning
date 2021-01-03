@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
+
+
 """ Neuron Class """
-
-
 import numpy as np
 
 
@@ -22,11 +22,9 @@ class Neuron:
     def W(self):
         return self.__W
 
-
     @property
     def b(self):
         return self.__b
-
 
     @property
     def A(self):
