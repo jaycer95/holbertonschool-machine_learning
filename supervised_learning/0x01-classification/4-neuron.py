@@ -49,8 +49,8 @@ class Neuron:
     def evaluate(self, X, Y):
         """ Evaluate the neuron’s predictions """
 
-        # a = self.forward_prop(X)
-        # P = a.astype(int)
+        a = self.forward_prop(X)
+        P = a.astype(int)
         # P[P >= 0.5] = 1
         # P[P < 0.5] = 0
         m = X.shape[1]
