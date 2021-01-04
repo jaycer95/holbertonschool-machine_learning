@@ -5,8 +5,9 @@
 import numpy as np
 
 
-class NeuronNetwork:
+class NeuralNetwork:
     """ Define a neural network with one hidden layer """
+
     def __init__(self, nx, nodes):
         """Instantination"""
         if not isinstance(nx, int):
