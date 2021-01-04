@@ -78,7 +78,7 @@ class Neuron:
             raise ValueError("alpha must be positive")
 
         for _ in range(iterations):
-            self.gradient_descent(X, Y, self.__A, alpha)
             self.__A = self.forward_prop(X)
+            self.gradient_descent(X, Y, self.__A, alpha)
 
         return self.evaluate(X, Y)
