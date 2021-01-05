@@ -22,8 +22,8 @@ class DeepNeuralNetwork:
         self.L = 0
         self.cache = {}
         self.weights = {}
-        L = len(layers) - 1  # integer representing the number of layers
-        for l in range(1, L + 1):
+        leng = len(layers) - 1  # integer representing the number of layers
+        for l in range(1, leng + 1):
             self.weights["W" + str(l)] = np.random.randn(layers[l],
                                                          nx) * np.sqrt(2 / nx)
             self.weights["b" + str(l)] = np.zeros((layers[l], 1))
