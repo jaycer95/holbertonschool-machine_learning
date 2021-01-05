@@ -50,7 +50,7 @@ class NeuralNetwork:
     @property
     def A2(self):
         return self.__A2
-    
+
     def forward_prop(self, X):
         """ Calculates the forward propagation of the neural network """
         z1 = np.matmul(self.__W1, X) + self.__b1
@@ -58,7 +58,7 @@ class NeuralNetwork:
         z2 = np.matmul(self.__W2, self.__A1) + self.__b2
         self.__A2 = 1/(1 + (np.exp(-z2)))
         return self.__A1, self.__A2
-    
+
     def cost(self, Y, A):
         """ Calculate the cost of the model using logistic regression """
         m = Y.shape[1]

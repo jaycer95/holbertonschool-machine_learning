@@ -58,3 +58,19 @@ class NeuralNetwork:
         z2 = np.matmul(self.__W2, self.__A1) + self.__b2
         self.__A2 = 1/(1 + (np.exp(-z2)))
         return self.__A1, self.__A2
+
+    def cost(self, Y, A):
+        """ Calculate the cost of the model using logistic regression """
+        m = Y.shape[1]
+        T = np.transpose(A)
+        L = np.transpose(np.log(1.0000001 - A))
+        cst = np.squeeze(-1 / m * (np.dot(Y, np.log(T)) + np.dot(1 - Y, L)))
+        return cst
+
+    def evaluate(self, X, Y):
+        """ Evaluate the neuron’s predictions """
+
+        a = self.forward_prop(X)
+        P = np.where(a < 0.5, 0, 1)
+        c = self.cost(Y, a)
+        return P, c
