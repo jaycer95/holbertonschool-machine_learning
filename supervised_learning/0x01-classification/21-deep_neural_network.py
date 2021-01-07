@@ -83,7 +83,7 @@ class DeepNeuralNetwork:
             A = cache["A" + str(i-1)]
             dW = np.matmul(dz, A.T) / m
             db = np.sum(dz, axis=1, keepdims=True) / m
-            self.__weights["W" + str(i)] -= alpha * dW
-            self.__weights["b" + str(i)] -= alpha * db
             dz = np.matmul(self.__weights[
                 "W" + str(i)].T, dz) * (A * (1 - A))
+            self.__weights["W" + str(i)] -= alpha * dW
+            self.__weights["b" + str(i)] -= alpha * db
