@@ -138,8 +138,9 @@ class DeepNeuralNetwork:
     def load(filename):
         """loads pickled instance object"""
         try:
-            with open(filename, "rb") as f:
-                ld = pickle.load(f)
-            return ld
+            file_obj = open(filename, 'rb')
         except Exception:
             return None
+        instance_obj = pickle.load(file_obj)
+        file_obj.close()
+        return instance_obj
