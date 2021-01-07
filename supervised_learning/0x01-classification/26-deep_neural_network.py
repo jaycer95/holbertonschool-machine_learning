@@ -57,9 +57,9 @@ class DeepNeuralNetwork:
         """Calculates the forward propagation of the neural network"""
         self.__cache["A0"] = X
         for i in range(self.__L):
-            z = np.dot(self.__weights["W" + str(i+1)], self.__cache[
-                "A" + str(i)]) + (self.__weights["b" + str(i+1)])
-            self.__cache["A" + str(i+1)] = 1 / (1 + np.exp(-z))
+            z = np.dot(self.__weights["W" + str(i + 1)], self.__cache[
+                "A" + str(i)]) + (self.__weights["b" + str(i + 1)])
+            self.__cache["A" + str(i + 1)] = 1 / (1 + np.exp(-z))
         return self.__cache["A" + str(self.__L)], self.__cache
 
     def cost(self, Y, A):
@@ -82,7 +82,7 @@ class DeepNeuralNetwork:
         m = Y.shape[1]
         dz = cache["A" + str(self.__L)] - Y
         for i in range(self.L, 0, -1):
-            A = cache["A" + str(i-1)]
+            A = cache["A" + str(i - 1)]
             dW = np.matmul(dz, A.T) / m
             db = np.sum(dz, axis=1, keepdims=True) / m
             dz = np.matmul(self.__weights[
@@ -94,7 +94,7 @@ class DeepNeuralNetwork:
         self, X, Y,
         iterations=5000, alpha=0.05,
         verbose=True, graph=True, step=100
-            ):
+    ):
         """ Trains the neural network """
         if not isinstance(iterations, int):
             raise TypeError("iterations must be an integer")
@@ -112,7 +112,7 @@ class DeepNeuralNetwork:
         axey = []
         axex = []
         for iteration in range(iterations + 1):
-            A, cache =self.forward_prop(X)
+            A, cache = self.forward_prop(X)
             self.gradient_descent(Y, cache, alpha)
             if verbose and iteration % 100 == 0:
                 print("Cost after {} iterations: {}".format(
@@ -129,6 +129,8 @@ class DeepNeuralNetwork:
 
     def save(self, filename):
         """ Saves the instance object to a file in a pickle format """
+        if not filename:
+            return None
         if not filename.endswith(".pkl"):
             filename += ".pkl"
         with open(filename, "wb") as f:
