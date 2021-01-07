@@ -55,9 +55,9 @@ class DeepNeuralNetwork:
         """Calculates the forward propagation of the neural network"""
         self.__cache["A0"] = X
         for i in range(self.__L):
-            z = np.dot(self.__weights["W" + str(i + 1)], self.__cache[
-                "A" + str(i)]) + (self.__weights["b" + str(i + 1)])
-            self.__cache["A" + str(i + 1)] = 1 / (1 + np.exp(-z))
+            z = np.dot(self.__weights["W" + str(i+1)], self.__cache[
+                "A" + str(i)]) + (self.__weights["b" + str(i+1)])
+            self.__cache["A" + str(i+1)] = 1 / (1 + np.exp(-z))
         return self.__cache["A" + str(self.__L)], self.__cache
 
     def cost(self, Y, A):
@@ -78,11 +78,12 @@ class DeepNeuralNetwork:
     def gradient_descent(self, Y, cache, alpha=0.05):
         """ Calculates one pass of gradient descent on the neural network """
         m = Y.shape[1]
-        dzl = cache["A" + str(self.__L)] - Y
-        for j in range(self.L, 0, -1):
-            A = cache["A" + str(j - 1)]
-            self.__weights["W" + str(j)] -= alpha * np.matmul(dzl, A.T) / m
-            self.__weights["b" + str(j)] -= alpha * \
-                np.sum(dzl, axis=1, keepdims=True) / m
-            dzl = np.matmul(self.__weights[
-                "W" + str(j)].T, dzl) * (A * (1 - A))
+        dz = cache["A" + str(self.__L)] - Y
+        for i in range(self.L, 0, -1):
+            A = cache["A" + str(i-1)]
+            dW = np.matmul(dz, A.T) / m
+            db = np.sum(dz, axis=1, keepdims=True) / m
+            self.__weights["W" + str(i)] -= alpha * dW
+            self.__weights["b" + str(i)] -= alpha * db
+            dz = np.matmul(self.__weights[
+                "W" + str(i)].T, dz) * (A * (1 - A))
