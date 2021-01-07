@@ -98,10 +98,10 @@ class Neuron:
             self.gradient_descent(X, Y, self.__A, alpha)
 
             if verbose and iteration % step == 0:
-                axey.append(self.cost(Y, self.__A))
-                axex.append(iteration)
                 print("Cost after {} iterations: {}".format(
                     iteration, self.cost(Y, self.__A)))
+                axey.append(self.cost(Y, self.__A))
+                axex.append(iteration)
         if graph:
             plt.plot(axex, axey, 'b-')
             plt.xlabel('iteration')
