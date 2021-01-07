@@ -6,6 +6,6 @@ import numpy as np
 def one_hot_encode(Y, classes):
     """ One hot encode """
     try:
-        return np.eye(classes)[Y.reshape(-1)].T
+        return np.eye(classes)[Y].T
     except Exception:
         return None
