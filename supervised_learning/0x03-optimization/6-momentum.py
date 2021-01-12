@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """ Normalization function """
 
-import numpy as np
 import tensorflow as tf
 
 
