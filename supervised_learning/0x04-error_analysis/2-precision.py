@@ -6,4 +6,4 @@ import numpy as np
 
 def precision(confusion):
     """ calculates the precision for each class in a confusion matrix """
-    return confusion.diagonal() / confusion.sum(axis = 0)
+    return confusion.diagonal() / confusion.sum(axis=0)

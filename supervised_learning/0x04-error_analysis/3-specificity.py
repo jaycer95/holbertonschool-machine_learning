@@ -9,6 +9,6 @@ def specificity(confusion):
     truepos = confusion.diagonal()
     falsepos = confusion.sum(axis=0) - truepos
     falseneg = confusion.sum(axis=1) - truepos
-    trueneg = confusion.sum() - (truepos+falsepos+falseneg)
+    trueneg = confusion.sum() - (truepos + falsepos + falseneg)
 
     return trueneg / (trueneg + falsepos)
