@@ -6,7 +6,7 @@ import numpy as np
 
 def dropout_forward_prop(X, weights, L, keep_prob):
     """Conducts forward propagation using Dropout"""
-    cache = {"AG" : X}
+    cache = {"A0" : X}
     for i in range(L):
         z = np.matmul(weights["W" + str(i + 1)], cache["A" + str(i)]) + weights["b" + str(i + 1)]
         drop = np.random.binomial(1, keep_prob, size=z.shape)
