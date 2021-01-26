@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """ Keras """
-
 import tensorflow.keras as K
 
 
@@ -16,8 +15,8 @@ def train_model(
     history = network.fit(
         x=data,
         y=labels,
-        epochs=epochs,
         verbose=verbose,
         batch_size=batch_size,
+        epochs=epochs,
         shuffle=shuffle)
     return history
