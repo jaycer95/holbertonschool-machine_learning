@@ -18,6 +18,6 @@ def train_model(
         y=labels,
         epochs=epochs,
         verbose=verbose,
-        shuffle=shuffle, 
-        batch_size=batch_size)
+        batch_size=batch_size,
+        shuffle=shuffle)
     return history
