@@ -16,8 +16,8 @@ def train_model(
     history = network.fit(
         x=data,
         y=labels,
-        batch_size=batch_size,
         epochs=epochs,
         verbose=verbose,
+        batch_size=batch_size,
         shuffle=shuffle)
     return history
