@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Keras """
+""" Build model """
 
 import tensorflow.keras as K
 
