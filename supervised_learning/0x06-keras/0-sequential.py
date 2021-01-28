@@ -22,5 +22,5 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
                     layers[i],
                     activation=activations[i],
                     kernel_regularizer=K.regularizers.l2(
-                        l=lambtha)))
+                        lambtha)))
     return model
