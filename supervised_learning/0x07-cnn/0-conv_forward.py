@@ -5,7 +5,7 @@ import numpy as np
 
 
 def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
-    """ perform forward propagation over a convolutional layer of a neural network """
+    """ perform forward propagation over a convolutional layer """
     m, h, w, cprev = A_prev.shape
     kh, kw, cpev, cnew = W.shape
     sh, sw = stride
@@ -20,8 +20,7 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
     ow = int((w-kw+2*pw)/sw + 1)
     z = np.zeros((m, oh, ow, cnew))
     prev_pad = np.pad(A_prev, pad_width=((0,), (ph,), (pw,), (0,)),
-                     mode="constant",
-                     constant_values=0)
+                      mode="constant", constant_values=0)
     for i in range(oh):
         for j in range(ow):
             for c in range(cnew):
