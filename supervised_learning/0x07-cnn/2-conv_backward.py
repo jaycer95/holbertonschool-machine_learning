@@ -21,8 +21,7 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     ow = int((w-kw+2*pw)/sw + 1)
 
     prev_pad = np.pad(A_prev, pad_width=((0,), (ph,), (pw,), (0,)),
-               mode="constant",
-               constant_values=0)
+                      mode="constant", constant_values=0)
 
     dW = np.zeros_like(W)
     dA = np.zeros_like(prev_pad)
