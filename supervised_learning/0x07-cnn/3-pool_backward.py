@@ -16,12 +16,12 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='avg'):
             for y in range(wnew):
                 for c in range(cnew):
                     A = A_prev[i, x*sh:kh+x*sh, y*sw:kw+y*sw, c]
-                    dA = dA_prev[i, x*sh:kh+x*sh, y*sw:kw+y*sw, c]
+                    dAu = dA_prev[i, x*sh:kh+x*sh, y*sw:kw+y*sw, c]
 
                     if mode == 'max':
                         mask = (A == np.max(A))
-                        dA += np.multiply(dA[i, x, y, c], mask)
+                        dAu += np.multiply(dA[i, x, y, c], mask)
 
                     if mode == 'avg':
-                        dA += dA[i, x, y, c]/(kh*kw)
+                        dAu += dA[i, x, y, c]/(kh*kw)
     return dA_prev
