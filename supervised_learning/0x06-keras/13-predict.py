@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """ Keras """
 import tensorflow.keras as K
