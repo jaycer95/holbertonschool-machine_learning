@@ -6,6 +6,7 @@ import numpy as np
 import cv2
 import glob
 
+
 class Yolo:
     """ Use the Yolo v3 algorithm to perform object detection """
 
