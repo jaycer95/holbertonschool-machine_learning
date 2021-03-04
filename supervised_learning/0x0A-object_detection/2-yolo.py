@@ -57,7 +57,7 @@ class Yolo:
         return boxes, box_confidences, box_class_probs
 
     def filter_boxes(self, boxes, box_confidences, box_class_probs):
-        """ Filter YOLO boxes based on object and class confidence."""
+        """filter boxes"""
         box_scores = [box_confidences[i] * box_class_probs[i]
                       for i in range(len(box_confidences))]
         box_classes = [np.argmax(box_class, axis=-1)
