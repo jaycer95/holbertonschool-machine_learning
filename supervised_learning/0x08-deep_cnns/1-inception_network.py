@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from tensorflow import keras as K
+import tensorflow.keras as K
 inception_block = __import__('0-inception_block').inception_block
 
 
