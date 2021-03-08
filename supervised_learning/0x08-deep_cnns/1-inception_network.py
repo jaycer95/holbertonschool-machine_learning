@@ -35,7 +35,7 @@ def inception_network():
     layer = inception_block(layer, (256, 160, 320, 32, 128, 128))
     layer = inception_block(layer, (384, 192, 384, 48, 128, 128))
     layer = K.layers.AveragePooling2D((7, 7), strides=1)(layer)
-    layer = K.layers.Dropout(0.6)(layer)
+    layer = K.layers.Dropout(0.4)(layer)
     layer = K.layers.Dense(1000, activation='softmax', name='output')(layer)
     model = K.models.Model(inputs=input_layer, outputs=layer)
     return model
