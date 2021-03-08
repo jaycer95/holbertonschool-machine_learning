@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+""" Inception Network """
 import tensorflow.keras as K
 inception_block = __import__('0-inception_block').inception_block
 
@@ -26,8 +26,8 @@ def inception_network():
     layer = K.layers.Conv2D(
         filters=64,
         kernel_size=(
-            3,
-            3),
+            1,
+            1),
         strides=1,
         padding='same',
         activation='relu')(layer)
