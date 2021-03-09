@@ -11,7 +11,7 @@ def resnet50():
     initializer = K.initializers.he_normal()
 
     # Stage 1
-    layer = K.layers.Conv2D(64, (7, 7), padding='same',
+    layer = K.layers.Conv2D(64, (7, 7), padding='same',strides=2,
                             kernel_initializer=initializer)(input_layer)
     layer = K.layers.BatchNormalization()(layer)
     layer = K.layers.Activation('relu')(layer)
@@ -47,7 +47,7 @@ def resnet50():
     layer = K.layers.AveragePooling2D((7, 7))(layer)
 
     # softmax
-    output = K.layers.Dense(1000, activation='softmax')(layer)
+    output = K.layers.Dense(1000, activation='softmax', kernel_initializer=initializer)(layer)
 
     model = K.models.Model(inputs=input_layer, outputs=output)
     return model
