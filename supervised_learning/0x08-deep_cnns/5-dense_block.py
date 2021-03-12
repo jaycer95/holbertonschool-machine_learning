@@ -3,8 +3,8 @@
 import tensorflow.keras as K
 
 
-def H(input, num_filters):
-    x = K.layers.BatchNormalization()(input)
+def H(x, num_filters):
+    x = K.layers.BatchNormalization()(x)
     x = K.layers.Activation('relu')(x)
     x = K.layers.Conv2D(
         4 * num_filters,
@@ -27,6 +27,6 @@ def dense_block(X, nb_filters, growth_rate, layers):
     """Build a dense block """
     for i in range(layers):
         layer = H(X, growth_rate)
-        X = K.layers.Concatenate()([layer, X])
+        X = K.layers.Concatenate()([X, layer])
         nb_filters += growth_rate
     return X, nb_filters
