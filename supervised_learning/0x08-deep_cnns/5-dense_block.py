@@ -4,6 +4,7 @@ import tensorflow.keras as K
 
 
 def H(x, num_filters):
+    """ conv layers """
     x = K.layers.BatchNormalization()(x)
     x = K.layers.Activation('relu')(x)
     x = K.layers.Conv2D(
