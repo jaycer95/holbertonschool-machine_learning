@@ -53,6 +53,7 @@ def minor(matrix):
         q.append(a)
     return q
 
+
 def cofactor(matrix):
     """ cofactor of a matrix """
     if not isinstance(matrix, list) or matrix == []:
