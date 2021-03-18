@@ -44,6 +44,8 @@ def minor(matrix):
     n = len(matrix)
     if n == 1:
         return [[1]]
+    if n == 2:
+        return [i[::-1] for i in matrix][::-1]
     q = []
     for i in range(n):
         a = []
