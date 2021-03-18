@@ -37,21 +37,18 @@ def minor(matrix):
         raise TypeError('matrix must be a list of lists')
     if any(not isinstance(i, list) for i in matrix):
         raise TypeError('matrix must be a list of lists')
-    if matrix == [[]]:
-        return 1
     if any(len(i) != len(matrix) for i in matrix):
-        raise ValueError('matrix must be a square matrix')
+        raise ValueError('matrix must be a non-empty square matrix')
+    if len(matrix[0]) == 0:
+        raise ValueError('matrix must be a non-empty square matrix')
     n = len(matrix)
     if n == 1:
         return [[1]]
-    if n == 2:
-        return [i[::-1] for i in matrix][::-1]
-    else:
-        q = []
-        for i in range(n):
-            a = []
-            for j in range(n):
-                a.append(determinant([row[:j] + row[j + 1:]
-                                    for row in (matrix[:i] + matrix[i + 1:])]))
-            q.append(a)
-        return q
+    q = []
+    for i in range(n):
+        a = []
+        for j in range(n):
+            a.append(determinant([row[:j] + row[j + 1:]
+                                for row in (matrix[:i] + matrix[i + 1:])]))
+        q.append(a)
+    return q
