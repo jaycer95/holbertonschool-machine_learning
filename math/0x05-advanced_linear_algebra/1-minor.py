@@ -49,6 +49,6 @@ def minor(matrix):
         a = []
         for j in range(n):
             a.append(determinant([row[:j] + row[j + 1:]
-                                for row in (matrix[:i] + matrix[i + 1:])]))
+                                  for row in (matrix[:i] + matrix[i + 1:])]))
         q.append(a)
     return q
