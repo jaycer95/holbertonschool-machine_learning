@@ -77,4 +77,4 @@ def cofactor(matrix):
 def adjugate(matrix):
     """ adjugate of a matrix """
     cm = cofactor(matrix)
-    return cm.transpose()
+    return [list(i) for i in zip(*cm)]
