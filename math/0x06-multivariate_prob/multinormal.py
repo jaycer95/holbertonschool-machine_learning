@@ -6,6 +6,7 @@ import numpy as np
 
 class MultiNormal:
     """the class pf multinormal"""
+
     def __init__(self, data):
         """class constructor"""
         if not isinstance(data, np.ndarray) or data.ndim != 2:
@@ -16,11 +17,12 @@ class MultiNormal:
         self.mean = np.mean(data, axis=1, keepdims=True)
         arg_mean = data - self.mean
         self.cov = (np.dot(arg_mean, arg_mean.T)) / (n - 1)
-    
+
     def pdf(self, x):
         """ Probability density Function """
         d = self.mean.shape[0]
         arg_mean = x - self.mean
         invsqrtdet = 1 / np.sqrt(np.linalg.det(self.cov))
         invcov = np.linalg.inv(self.cov)
-        return (2 * np.pi) ** (- d / 2) * invsqrtdet * np.exp((-(np.dot(np.dot(arg_mean.T, invcov) ,arg_mean))/2))[0][0]
+        return (2 * np.pi) ** (- d / 2) * invsqrtdet * \
+            np.exp((-(np.dot(np.dot(arg_mean.T, invcov), arg_mean)) / 2))[0][0]
