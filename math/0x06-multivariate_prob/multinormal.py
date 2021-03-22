@@ -22,7 +22,7 @@ class MultiNormal:
         """ Probability density Function """
         d = self.mean.shape[0]
         arg_mean = x - self.mean
-        invsqrtdet = 1 / np.sqrt(np.linalg.det(self.cov))
+        invsqrtdet = np.sqrt((2 * np.pi) ** d * np.linalg.det(self.cov))
         invcov = np.linalg.inv(self.cov)
-        return (2 * np.pi) ** (- d / 2) * invsqrtdet * \
-            np.exp((-(np.dot(np.dot(arg_mean.T, invcov), arg_mean)) / 2))[0][0]
+        exp = np.exp((-(np.dot(np.dot(arg_mean.T, invcov), arg_mean)) / 2))
+        return (1 / invsqrtdet * exp)[0][0]
