@@ -23,6 +23,5 @@ class MultiNormal:
         d = self.mean.shape[0]
         arg_mean = x - self.mean
         invsqrtdet = np.sqrt((2 * np.pi) ** d * np.linalg.det(self.cov))
-        invcov = np.linalg.inv(self.cov)
-        exp = np.exp((-(np.dot(np.dot(arg_mean.T, invcov), arg_mean)) / 2))
+        exp = np.exp((-(np.linalg.solve(self.cov, arg_mean).T.dot(arg_mean)) / 2))
         return (1 / invsqrtdet * exp)[0][0]
