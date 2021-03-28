@@ -10,4 +10,4 @@ def pca(X, var=0.95):
     M = np.cumsum(S) / np.sum(S)
     i = np.where(M <= var, 1, 0)
     i = np.sum(i)
-    return V.S[:, :i + 1]
+    return V.T[:, :i + 1]
