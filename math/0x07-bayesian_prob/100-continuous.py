@@ -5,7 +5,7 @@ import scipy
 
 
 def posterior(x, n, p1, p2):
-    """posterior probability within a specific range given the data"""
+    """ Posterior probability """
     if not isinstance(n, int) or n <= 0:
         raise ValueError("n must be a positive integer")
     if not isinstance(x, int) or x < 0:
