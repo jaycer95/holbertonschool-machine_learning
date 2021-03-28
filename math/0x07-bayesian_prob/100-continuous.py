@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Bayesian Probability """
 import numpy as np
-import scipy
+from scipy import special
 
 
 def posterior(x, n, p1, p2):
@@ -19,6 +19,6 @@ def posterior(x, n, p1, p2):
         raise ValueError("p2 must be a float in the range [0, 1]")
     if p2 <= p1:
         raise ValueError("p2 must be greater than p1")
-    Y = scipy.special.btdtr(x + 1, n - x + 1, p1)
-    Z = scipy.special.btdtr(x + 1, n - x + 1, p2)
+    Y = special.btdtr(x + 1, n - x + 1, p1)
+    Z = special.btdtr(x + 1, n - x + 1, p2)
     return Z - Y
