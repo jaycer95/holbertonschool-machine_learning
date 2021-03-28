@@ -8,7 +8,5 @@ def pca(X, ndim):
     """ Principal component analysis """
     Xcentered = X - np.mean(X, axis=0)
     U, S, V = np.linalg.svd(Xcentered)
-    v = np.cumsum(S) / np.sum(S)
-    W = V.T[:, :ndim]
-    T = np.matmul(Xcentered, W)
+    T = np.matmul(Xcentered, V.T[:, :ndim])
     return T
