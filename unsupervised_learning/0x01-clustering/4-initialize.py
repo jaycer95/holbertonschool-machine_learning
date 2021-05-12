@@ -9,7 +9,7 @@ def initialize(X, k):
     try:
         _, d = X.shape
         m, _ = kmeans(X, k)
-        pi = np.ones(k, dtype=int) / 4
+        pi = np.ones(k, dtype=int) / k
         ident = [np.identity(d)]
         S = np.array(ident * k)
         return pi, m, S
