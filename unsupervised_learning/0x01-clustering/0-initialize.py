@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 """ Clustering """
-
 import numpy as np
 
 
 def initialize(X, k):
     """ Initializes cluster centroids for K-mean"""
+    if not isinstance(k, int) or k <= 0:
+        return None
     try:
         _, d = X.shape
         centroids = np.random.uniform(
