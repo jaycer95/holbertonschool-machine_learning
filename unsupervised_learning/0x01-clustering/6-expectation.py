@@ -6,13 +6,13 @@ pdf = __import__('5-pdf').pdf
 
 def expectation(X, pi, m, S):
     """ Calculate the expectation step in the EM algorithm for a GMM """
-    if type(X) is not np.ndarray or len(X.shape) != 2:
+    if not isinstance(X, np.ndarray) or len(X.shape) != 2:
         return None, None
-    if type(m) is not np.ndarray or len(m.shape) != 2:
+    if not isinstance(m, np.ndarray) or len(m.shape) != 2:
         return None, None
-    if type(S) is not np.ndarray or len(S.shape) != 3:
+    if not isinstance(S, np.ndarray) or len(S.shape) != 3:
         return None, None
-    if type(pi) is not np.ndarray or len(pi.shape) != 1:
+    if not isinstance(pi, np.ndarray) or len(pi.shape) != 1:
         return None, None
     if X.shape[1] != S.shape[1] or S.shape[1] != S.shape[2]:
         return (None, None)
