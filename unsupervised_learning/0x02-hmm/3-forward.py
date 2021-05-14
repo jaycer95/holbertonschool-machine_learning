@@ -24,10 +24,7 @@ def forward(Observation, Emission, Transition, Initial):
     alpha[:, 0] = Initial.T * Emission[:, Observation[0]]
     for t in range(1, T):
         for j in range(N):
-            alpha[j,
-                  t] = alpha[:,
-                             t - 1].dot(Transition[:,
-                                                   j]) * Emission[j,
-                                                                  Observation[t]]
+            alpha[j, t] = alpha[:, t - 1].dot(
+                Transition[:, j]) * Emission[j, Observation[t]]
     P = np.sum(alpha[:, T - 1])
     return P, alpha
