@@ -22,11 +22,6 @@ def backward(Observation, Emission, Transition, Initial):
 
     beta = np.zeros((N, T))
     beta[:, T - 1] = np.ones(N)
-    # for t in range(T - 2 , -1, -1):
-    #     for j in range(N):
-    # P = np.sum(beta[:, 0] * Emission[:, Observation[0]] * Initial.T)
-    # return P, beta
-
     for t in range(T - 2, -1, -1):
         for j in range(N):
             beta[j, t] = (beta[:, t + 1] * Emission[:, Observation[t + 1]]
