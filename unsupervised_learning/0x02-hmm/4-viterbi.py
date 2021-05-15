@@ -24,7 +24,8 @@ def viterbi(Observation, Emission, Transition, Initial):
     omega[:, 0] = Initial.T * Emission[:, Observation[0]]
     for t in range(1, T):
         for j in range(N):
-            prob = omega[:, t-1] * Emission[j, Observation[t]] * Transition[:, j]
+            prob = omega[:, t - 1
+                         ] * Emission[j, Observation[t]] * Transition[:, j]
             omega[j, t] = np.max(prob)
             prev[j, t] = np.argmax(prob, 0)
     P = np.max(omega[:, T - 1])
