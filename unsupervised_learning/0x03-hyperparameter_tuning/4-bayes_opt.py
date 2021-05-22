@@ -31,9 +31,12 @@ class BayesianOptimization:
     def acquisition(self):
         """ Calculate the next best sample location """
         mu, sigma = self.gp.predict(self.X_s)
-        with np.errstate(divide='warn'):
-            Z = (mu - np.min(self.gp.Y) - self.xsi) / sigma
-            EI = (mu - np.min(self.gp.Y) - self.xsi) * \
-                norm.cdf(Z) + sigma * norm.pdf(Z)
-            X_next = self.X_s[np.argmax(EI)]
-            return X_next, EI
+        if self.minimize is True:
+            fpredict = np.min(self.gp.Y)
+        else:
+            fpredict = np.max(self.gp.Y)
+        Z = (mu - fpredict - self.xsi) / sigma
+        EI = (mu - fpredict - self.xsi) * \
+            norm.cdf(Z) + sigma * norm.pdf(Z)
+        X_next = self.X_s[np.argmax(EI)]
+        return X_next, EI
