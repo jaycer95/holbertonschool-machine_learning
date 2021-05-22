@@ -39,5 +39,6 @@ class BayesianOptimization:
             Z = (mu - fpredict - self.xsi) / sigma
             EI = (mu - fpredict - self.xsi) * \
                 norm.cdf(Z) + sigma * norm.pdf(Z)
+            EI[sigma == 0.0] = 0.0
         X_next = self.X_s[np.argmax(EI)]
         return X_next, EI
