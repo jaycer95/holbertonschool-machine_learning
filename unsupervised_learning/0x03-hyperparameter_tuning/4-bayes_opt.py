@@ -35,8 +35,9 @@ class BayesianOptimization:
             fpredict = np.min(self.gp.Y)
         else:
             fpredict = np.max(self.gp.Y)
-        Z = (mu - fpredict - self.xsi) / sigma
-        EI = (mu - fpredict - self.xsi) * \
-            norm.cdf(Z) + sigma * norm.pdf(Z)
+        with np.errstate(divide='warn'):
+            Z = (mu - fpredict - self.xsi) / sigma
+            EI = (mu - fpredict - self.xsi) * \
+                norm.cdf(Z) + sigma * norm.pdf(Z)
         X_next = self.X_s[np.argmax(EI)]
         return X_next, EI
