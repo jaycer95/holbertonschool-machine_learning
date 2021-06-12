@@ -21,6 +21,5 @@ class RNNCell:
         """ Perform forward propagation for one time step """
         allinput = np.concatenate((h_prev, x_t), axis=1)
         h_next = np.tanh(np.matmul(allinput, self.Wh) + self.bh)
-        y = np.matmul(h_next, self.Wy) + self.by
-        y = self.softmax(y)
+        y = self.softmax(np.matmul(h_next, self.Wy) + self.by)
         return h_next, y
