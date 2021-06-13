@@ -2,12 +2,14 @@
 """ NLP - Evaluation Metrics """
 import numpy as np
 
+
 def ngrams(sentences, n):
     """ ngrams sentence """
     ngrams_sentence = []
     for i in range(len(sentences) - n + 1):
         ngrams_sentence.append(' '.join(sentences[i:i + n]))
     return ngrams_sentence
+
 
 def ngram_bleu(references, sentence, n):
     """ Calculate the n-gram BLEU score for a sentence """
