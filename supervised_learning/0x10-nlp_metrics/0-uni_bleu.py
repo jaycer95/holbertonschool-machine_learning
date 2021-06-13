@@ -12,7 +12,7 @@ def uni_bleu(references, sentence):
     if r > c:
         bp = np.exp(1 - r / c)
     else:
-        bp = 1    
+        bp = 1 
     words = dict()
     for word in sentence:
         for ref in references:
