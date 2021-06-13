@@ -13,14 +13,6 @@ def ngrams(sentences, n):
 
 def ngram_bleu(references, sentence, n):
     """ Calculate the n-gram BLEU score for a sentence """
-    c = len(sentence)
-    refslen = np.array([len(r) for r in references])
-    refminidx = np.argmin(np.abs(refslen - c))
-    r = len(references[refminidx])
-    if r > c:
-        bp = np.exp(1 - r / c)
-    else:
-        bp = 1
     s = ngrams(sentence, n)
     r = list(ngrams(ref, n) for ref in references)
     words = dict()
@@ -32,7 +24,7 @@ def ngram_bleu(references, sentence, n):
             else:
                 words.update({word: ref.count(word)})
     p = sum(words.values())
-    return bp * p / len(s)
+    return p / len(s)
 
 
 def cumulative_bleu(references, sentence, n):
