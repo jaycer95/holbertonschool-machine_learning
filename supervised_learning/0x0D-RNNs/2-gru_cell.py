@@ -28,7 +28,7 @@ class GRUCell:
         return np.exp(-np.logaddexp(0, -x))
 
     def forward(self, h_prev, x_t):
-        """function that performs forward propagation for one time step"""
+        """ Perform forward propagation for one time step"""
         allinput = np.concatenate((h_prev, x_t), axis=1)
         resetgate = self.sigmoid(np.matmul(allinput, self.Wr) + self.br)
         updategate = self.sigmoid(np.matmul(allinput, self.Wz) + self.bz)
