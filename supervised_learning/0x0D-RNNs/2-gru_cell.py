@@ -8,10 +8,10 @@ class GRUCell:
 
     def __init__(self, i, h, o):
         """ initialization"""
-        self.Wz, self.Wr, self.Wh = np.random.randn(i + h, h)
+        self.Wz = self.Wr = self.Wh = np.random.randn(i + h, h)
         self.Wy = np.random.randn(h, o)
 
-        self.bz, self.br, self.bh = np.zeros((1, h))
+        self.bz = self.br = self.bh = np.zeros((1, h))
         self.by = np.zeros((1, o))
 
     def softmax(self, x):
