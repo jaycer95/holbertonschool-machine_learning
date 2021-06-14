@@ -11,7 +11,6 @@ def positional_encoding(max_seq_len, dm):
             positional_embeddings[position, i] = np.sin(
                 position / np.power(10000, (2 * i // 2) / np.float(dm)))
 
-            positional_embeddings[position,
-                                  i + 1] = np.cos(position / np.power(10000,
-                                                                      (2 * i // 2) / np.float(dm)))
+            positional_embeddings[position, i + 1] = np.cos(
+                position / np.power(10000, (2 * i // 2) / np.float(dm)))
     return positional_embeddings
