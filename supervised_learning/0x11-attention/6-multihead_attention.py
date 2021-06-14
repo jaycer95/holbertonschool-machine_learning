@@ -31,7 +31,7 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         q = self.split_heads(q, batch_size)
 
         k = self.Wk(K)
-        k = self.split_heads(v, batch_size)
+        k = self.split_heads(k, batch_size)
 
         v = self.Wv(V)
         v = self.split_heads(v, batch_size)
