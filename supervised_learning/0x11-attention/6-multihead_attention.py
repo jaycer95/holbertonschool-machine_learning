@@ -17,24 +17,20 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         self.Wv = tf.keras.layers.Dense(dm)
         self.linear = tf.keras.layers.Dense(dm)
 
-    def split_heads(self, x, batch_size):
-        """ Split the last dimension into 2 and transpose 
-        the result """
-        x = tf.reshape(x, (batch_size, -1, self.h, self.depth))
-        return tf.transpose(x, perm=[0, 2, 1, 3])
-
     def call(self, Q, K, V, mask):
         """call function  """
         batch_size = tf.shape(Q)[0]
 
         q = self.Wq(Q)
-        q = self.split_heads(q, batch_size)
-
         k = self.Wk(K)
-        k = self.split_heads(k, batch_size)
-
         v = self.Wv(V)
-        v = self.split_heads(v, batch_size)
+        
+        q = tf.reshape(q, (batch_size, -1, self.h, self.depth))
+        q = tf.transpose(q, perm=[0, 2, 1, 3])
+        k = tf.reshape(k, (batch_size, -1, self.h, self.depth))
+        k = tf.transpose(k, perm=[0, 2, 1, 3])
+        v = tf.reshape(v, (batch_size, -1, self.h, self.depth))
+        v = tf.transpose(v, perm=[0, 2, 1, 3])
 
         sdpsoftmax, sdpoutput = sdp_attention(q, k, v, mask)
         sdpsoftmax = tf.transpose(sdpsoftmax, perm=[0, 2, 1, 3])
