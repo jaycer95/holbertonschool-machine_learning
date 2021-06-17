@@ -14,6 +14,8 @@ class Dataset:
             split=['train', 'validation'], as_supervised=True)
         self.tokenizer_pt, self.tokenizer_en = self.tokenize_dataset(
             self.data_train)
+        self.data_train = self.data_train.map(self.tf_encode).cache()
+        self.data_valid = self.data_valid.map(self.tf_encode).cache()
 
     def tokenize_dataset(self, data):
         """ Create sub-word tokenizers for our dataset"""
@@ -32,3 +34,13 @@ class Dataset:
         en = [self.tokenizer_en.vocab_size] + self.tokenizer_en.encode(
             en.numpy().decode('utf-8')) + [self.tokenizer_en.vocab_size + 1]
         return pt, en
+
+    def tf_encode(self, pt, en):
+        """ Tensorflow wrapper for the encode instance method """
+        tf_pt, tf_en = tf.py_function(
+            self.encode, inp=[
+                pt, en], Tout=[
+                tf.int64, tf.int64])
+        tf_pt.set_shape([None])
+        tf_en.set_shape([None])
+        return tf_pt, tf_en
